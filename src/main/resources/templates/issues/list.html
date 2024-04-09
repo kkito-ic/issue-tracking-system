@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>課題一覧 | 課題管理アプリケーション</title>
+</head>
+<body>
+<h1>課題一覧</h1>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>概要</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="issue : ${issueList}">
+        <th th:text="${issue.id}">(id)</th>
+        <td>
+            <a href="./detail.html" th:href="@{/issues/{issueId}(issueId=${issue.id})}" th:text="${issue.summary}">
+                (summary)
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<ul>
+    <li>
+        <a href="./creationForm.html" th:href="@{/issues/creationForm}">課題作成</a>
+    </li>
+    <li>
+        <a href="../index.html" th:href="@{/}">トップページに戻る</a>
+    </li>
+</ul>
+</body>
+</html>
